@@ -1,7 +1,22 @@
 doctype html
 html
   head
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    nav.navbar
+      .container
+        a(href='/') GymLog
+        a(href='/register') Register
+        a(href='/login') Log in
+        a(href='/workouts') Workout log
+    .container
+      block content
+      footer
+        .row
+          .col-12
+            small GymLog — Web Frameworks project
+    script(src='/javascripts/bootstrap.min.js')

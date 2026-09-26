@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  .row
+    .col-12.col-md-8
+      h1= title
+      p Create your GymLog account.
+      if message
+        p
+          strong= message
+      form(action="/register", method="post", role="form")
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="username") Username
+          .col-12.col-sm-8
+            input#username.form-control(type="text", name="username", value=username)
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="email") Email
+          .col-12.col-sm-8
+            input#email.form-control(type="email", name="email", value=email)
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="password") Password
+          .col-12.col-sm-8
+            input#password.form-control(type="password", name="password")
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="confirmPassword") Confirm password
+          .col-12.col-sm-8
+            input#confirmPassword.form-control(type="password", name="confirmPassword")
+        button.btn.btn-primary(type="submit") Register
+      p
+        a(href='/login') Already registered? Log in

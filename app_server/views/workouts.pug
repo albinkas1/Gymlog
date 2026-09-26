@@ -1,0 +1,61 @@
+extends layout
+
+block content
+  .row
+    .col-12.col-md-8
+      h1= title
+      if message
+        p
+          strong= message
+      h4 Add workout
+      form(action="/workouts", method="post", role="form")
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="exercise") Exercise
+          .col-12.col-sm-8
+            input#exercise.form-control(type="text", name="exercise")
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="date") Date
+          .col-12.col-sm-8
+            input#date.form-control(type="date", name="date")
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="time") Time
+          .col-12.col-sm-8
+            input#time.form-control(type="time", name="time")
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="sets") Sets
+          .col-12.col-sm-8
+            input#sets.form-control(type="number", name="sets", min="1")
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="reps") Reps
+          .col-12.col-sm-8
+            input#reps.form-control(type="number", name="reps", min="1")
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="weight") Weight (kg)
+          .col-12.col-sm-8
+            input#weight.form-control(type="number", name="weight", min="0", step="0.5")
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="note") Note
+          .col-12.col-sm-8
+            textarea#note.form-control(name="note", rows="5")
+        button.btn.btn-primary(type="submit") Add workout
+      each workout in workouts
+        .card
+          .card-body
+            h4.card-title= workout.exercise
+            p #{workout.date}, #{workout.time}
+            .row
+              .col-4
+                strong= workout.sets
+                br
+                small Sets
+              .col-4
+                strong= workout.reps
+                br
+                small Reps
+              .col-4
+                strong #{workout.weight} kg
+                br
+                small Weight
+            p.card-text= workout.note
+      else
+        p No workouts logged yet. Add your first one above.

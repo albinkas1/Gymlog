@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .row
+    .col-12.col-md-8
+      h1= title
+      p Sign in to view your workout log.
+      if message
+        p
+          strong= message
+      form(action="/login", method="post", role="form")
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="username") Username
+          .col-12.col-sm-8
+            input#username.form-control(type="text", name="username", value=username)
+        .form-group.row
+          label.col-12.col-sm-4.col-form-label(for="password") Password
+          .col-12.col-sm-8
+            input#password.form-control(type="password", name="password")
+        button.btn.btn-primary(type="submit") Log in
+      p
+        a(href='/register') Create an account

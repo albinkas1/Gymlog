@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
-router.get('/', function(req, res) {
-  res.render('index', { title: 'GymLog' });
-});
+const ctrlUsers = require('../controllers/users');
+const ctrlWorkouts = require('../controllers/workouts');
+router.get('/', ctrlUsers.login);
+router.get('/register', ctrlUsers.register);
+router.get('/login', ctrlUsers.login);
+router.get('/workouts', ctrlWorkouts.list);
 module.exports = router;
