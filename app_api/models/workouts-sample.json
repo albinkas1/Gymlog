@@ -1,0 +1,26 @@
+[
+  {
+    "exercise": "Deadlift",
+    "date": { "$date": "2026-10-24T16:45:00Z" },
+    "sets": 3,
+    "reps": 5,
+    "weight": 120,
+    "note": "Grip slipped on the last rep. Use chalk next time."
+  },
+  {
+    "exercise": "Back squat",
+    "date": { "$date": "2026-10-22T06:15:00Z" },
+    "sets": 5,
+    "reps": 5,
+    "weight": 100,
+    "note": "Felt strong. Kept depth below parallel on every rep."
+  },
+  {
+    "exercise": "Bench press",
+    "date": { "$date": "2026-10-20T17:30:00Z" },
+    "sets": 4,
+    "reps": 8,
+    "weight": 80,
+    "note": "Last set was a grind. Try 82.5 kg next week."
+  }
+]
