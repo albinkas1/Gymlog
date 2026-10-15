@@ -18,4 +18,30 @@ const workoutsList = function (req, res) {
     });
 };
 
-module.exports = { workoutsList };
+/* POST /api/workouts - date is YYYY-MM-DD and time is HH:MM */
+const workoutsCreate = function (req, res) {
+  const date = req.body.time
+    ? req.body.date + 'T' + req.body.time
+    : req.body.date;
+
+  Workout.create({
+    exercise: req.body.exercise,
+    date: date,
+    sets: req.body.sets,
+    reps: req.body.reps,
+    weight: req.body.weight,
+    note: req.body.note
+  })
+  .then(workout => {
+    res
+      .status(201)
+      .json(workout);
+  })
+  .catch(err => {
+    res
+      .status(400)
+      .json({ message: "Error creating workout", error: err });
+  });
+};
+
+module.exports = { workoutsList, workoutsCreate };
