@@ -44,4 +44,35 @@ const workoutsCreate = function (req, res) {
   });
 };
 
-module.exports = { workoutsList, workoutsCreate };
+/* GET /api/workouts/:workoutid */
+const workoutsReadOne = function (req, res) {
+  if (req.params && req.params.workoutid) {
+    Workout
+      .findById(req.params.workoutid)
+      .then(workout => {
+        if (!workout) {
+          return res
+            .status(404)
+            .json({ message: "workoutid not found" });
+        }
+        res
+          .status(200)
+          .json(workout);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ message: "Error retrieving workout", error: err });
+      });
+  } else {
+    res
+      .status(400)
+      .json({ message: "No workoutid in request" });
+  }
+};
+
+module.exports = {
+  workoutsList,
+  workoutsCreate,
+  workoutsReadOne
+};
