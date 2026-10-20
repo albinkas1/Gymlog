@@ -6,4 +6,5 @@ router.get('/', ctrlUsers.login);
 router.get('/register', ctrlUsers.register);
 router.get('/login', ctrlUsers.login);
 router.get('/workouts', ctrlWorkouts.list);
+router.post('/workouts', ctrlWorkouts.addWorkout);
 module.exports = router;
