@@ -1,6 +1,6 @@
-// The API runs inside this same Express application
+// API is served by this same app
 const apiOptions = {
-  server: 'http://localhost:3000'
+  server: 'http://localhost:' + (process.env.PORT || 3000)
 };
 
 const register = function(req, res) {

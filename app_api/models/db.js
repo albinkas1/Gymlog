@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-// The Atlas connection string is read from an environment variable,
-// so the username and password are not written into the code.
+// connection string comes from the MONGODB_URI env variable
 const dbURI = process.env.MONGODB_URI;
 
 if (!dbURI) {

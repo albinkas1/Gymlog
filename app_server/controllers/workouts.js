@@ -1,9 +1,9 @@
-// The API runs inside this same Express application
+// API is served by this same app
 const apiOptions = {
-  server: 'http://localhost:3000'
+  server: 'http://localhost:' + (process.env.PORT || 3000)
 };
 
-// Turns a workout from the API into the values the view displays
+// format a workout for the view
 const formatWorkout = function (workout) {
   const date = new Date(workout.date);
   return {
@@ -49,7 +49,13 @@ const list = function (req, res) {
 
 /* POST /workouts - sends the form to the API, then shows the log again */
 const addWorkout = function (req, res) {
-  const formData = new URLSearchParams(req.body);
+  // skip empty fields so schema defaults apply
+  const formData = new URLSearchParams();
+  for (const [name, value] of Object.entries(req.body)) {
+    if (value !== '') {
+      formData.append(name, value);
+    }
+  }
 
   fetch(apiOptions.server + '/api/workouts', { method: 'POST', body: formData })
     .then(response => {

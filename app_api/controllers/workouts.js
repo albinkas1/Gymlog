@@ -60,6 +60,12 @@ const workoutsReadOne = function (req, res) {
           .json(workout);
       })
       .catch(err => {
+        // invalid ObjectId, so no workout can match
+        if (err.name === 'CastError') {
+          return res
+            .status(404)
+            .json({ message: "workoutid not found" });
+        }
         res
           .status(500)
           .json({ message: "Error retrieving workout", error: err });
